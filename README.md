@@ -1,36 +1,30 @@
-# 👕 Wardrobe API - FastAPI
+# Stylr API 👕 (FastAPI)
 
-Une petite API REST pour gérer une garde-robe : ajouter, modifier, supprimer et consulter des vêtements.  
-Construite avec **FastAPI** et **Pydantic**. Idéal pour apprendre les bases du CRUD.
+Une petite API perso en Python pour gérer des vêtements. A fin de m’entraîner à utiliser FastAPI , structurer une appli, bosser avec les routes, les requêtes JSON, et commencer à toucher à la logique CRUD
 
 ---
 
-## 🚀 Lancer l'application
-
-Assure-toi d’avoir Python installé puis installe les dépendances :
+## Installation & lancement
 
 ```bash
 pip install fastapi uvicorn
-Lancer le serveur :
-
-bash
-Copier
-Modifier
 uvicorn main:app --reload
-L’API sera dispo ici :
+```
 
+API dispo sur : http://127.0.0.1:8000  
+Doc Swagger (super pratique) : http://127.0.0.1:8000/docs
 
-http://127.0.0.1:8000
-Et la doc Swagger automatique ici 👇
+---
 
+## Ce que tu peux faire
 
-http://127.0.0.1:8000/docs
-📦 Fonctionnalités
-✅ Ajouter un vêtement
-POST /vetement
+### Ajouter un vêtement
 
-Requête :
+POST `/vetement`
 
+Exemple :
+
+```json
 {
   "name": "Jean slim",
   "type": "Pantalon",
@@ -38,49 +32,50 @@ Requête :
   "marque": "Zara",
   "note": "Confortable"
 }
-📃 Voir tous les vêtements
-GET /vetements
+```
 
-Retourne une liste de tous les vêtements avec leur id.
+### Voir tous les vêtements
 
-✏️ Modifier un vêtement
-PUT /vetement/{id}
+GET `/vetements`  
+Retourne tous les vêtements enregistrés (avec leur ID).
 
-Permet de modifier les infos d’un vêtement via son ID.
+### Modifier un vêtement
 
-❌ Supprimer un vêtement
-DELETE /vetement/{id}
+PUT `/vetement/{id}`  
+Tu peux modifier un vêtement en passant son ID dans l’URL.
 
-Supprime un vêtement par ID.
+### Supprimer un vêtement
 
-⚠️ Gestion des erreurs
-Si un vêtement est introuvable (PUT ou DELETE) :
+DELETE `/vetement/{id}`
 
+---
+
+## Gestion d’erreurs
+
+Si tu tentes de modifier ou supprimer un vêtement qui n’existe pas :
+
+```json
 {
   "detail": "Vêtement non trouvé"
 }
-Code HTTP : 404 Not Found
-
-🧪 Tester l'API
-Ouvre Swagger UI à l’adresse :
-
-http://127.0.0.1:8000/docs
-Tu pourras tester tous les endpoints (POST, GET, PUT, DELETE) avec une interface graphique.
-
-📁 Arborescence
-
-.
-├── main.py
-└── README.md
-🔧 À venir (idées d’amélioration)
-Sauvegarde dans un fichier JSON
-
-Authentification
-
-Interface front en HTML
-
-🧑‍💻 Créé par
-Rafael Barbosa Silva
-🚀 Portfolio
-📧 rafael.barbosasilva.cg@gmail.com
 ```
+
+Code HTTP : `404 Not Found`
+
+---
+
+## À venir (idées)
+
+- [ ] Sauvegarde dans un fichier JSON
+- [ ] Authentification basique
+- [ ] Interface front simple en HTML
+
+---
+
+## À propos
+
+Projet réalisé dans le cadre de ma formation en développement Python.  
+But : monter en compétence et décrocher une alternance en dev backend.
+
+> Rafael Barbosa Silva  
+> 📩 rafael.barbosasilva.cg@gmail.com
